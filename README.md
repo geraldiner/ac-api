@@ -3,3 +3,33 @@
 ## Introduction
 
 This project is a reboot of the original acnhapi by Alexi Lours ([@alexislours on GitHub](https://github.com/alexislours)).
+
+## Other Projects
+
+Check out other stuff I've worked on:
+
+**Nook Radio**: https://github.com/geraldiner/nook-radio
+
+**ACNH API**: https://github.com/geraldiner/acnh-api
+
+**Minute To Win It Games API & Wiki**: https://github.com/geraldiner/min-to-win
+
+## Currently I'm
+
+- Working full-time as a Software Engineer at <a target="_blank" href="https://nomnomnow.com">Nom Nom</a>.
+- Challenging myself to crochet through my yarn stash before buying more. 🤠
+  - Kind of already failed when I bought the Woobles LOTR Collector's Edition. 😅 But I haven't bought anything since!
+
+But I'm always open to hearing about _your_ next big thing!
+
+## Let's get to know each other!
+
+**Website**: [geraldiner.com](https://geraldiner.com)
+
+**LinkedIn**: [in/GeraldineR](https://linkedin.com/in/geraldiner)
+
+**GitHub (You are here)**: [@geraldiner](https://github.com/geraldiner)
+
+**Sometimes I write**: [@geraldiner](https://geraldiner.hashnode.dev)
+
+**Resume**: [Click here for a PDF](https://geraldiner.com/GeraldineRagsac_Resume_2025.pdf)
