@@ -29,6 +29,7 @@ function Footer() {
           </a>
         </p>
         <nav className="flex justify-center items-center gap-6">
+          <Link href="/devlog">Dev Log</Link>
           <SignedIn>
             <ul>
               {ADMIN_LINKS.map((link) => {

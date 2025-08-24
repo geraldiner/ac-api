@@ -64,6 +64,38 @@
   code {
     @apply inline-block border border-gray-300 bg-white px-1 py-0.5 rounded-sm;
   }
+
+  ul {
+    @apply ml-4 py-2;
+  }
+
+  li {
+    @apply py-1;
+  }
+
+  ul > li {
+    @apply list-disc;
+  }
+
+  ul > li li {
+    @apply list-[circle];
+  }
+
+  ul > li li li {
+    @apply list-[square];
+  }
+
+  ol > li {
+    @apply list-decimal;
+  }
+
+  ol > li li {
+    @apply list-[lower-alpha];
+  }
+
+  ol > li li li {
+    @apply list-[lower-roman];
+  }
 }
 
 @layer components {
