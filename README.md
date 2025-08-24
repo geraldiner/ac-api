@@ -1,4 +1,4 @@
-# ACNH API 2.0
+# Animal Crossing API
 
 ## Introduction
 
