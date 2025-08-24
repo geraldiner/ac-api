@@ -29,6 +29,7 @@ export default antfu(
       "antfu/no-top-level-await": ["off"],
       "node/prefer-global/process": ["off"],
       "react/no-array-index-key": ["off"],
+      "style/arrow-parens": ["warn"],
       "style/brace-style": ["off"],
       "style/comma-dangle": ["off"],
       "style/operator-linebreak": ["off"],

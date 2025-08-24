@@ -21,7 +21,6 @@ export function getAllLogs(): Log[] {
   const slugs = getLogSlugs();
   const logs = slugs
     .map((slug) => getLogBySlug(slug))
-    // sort logs by date in descending order
     .sort((log1, log2) => (log1.date > log2.date ? -1 : 1));
   return logs;
 }
