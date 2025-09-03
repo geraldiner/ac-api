@@ -4,6 +4,8 @@
 
 This project is a reboot of the original acnhapi by Alexi Lours ([@alexislours on GitHub](https://github.com/alexislours)).
 
+Follow along with the dev log at https://ac-api.netlify.app/devlog!
+
 
 ## Other Projects
 
