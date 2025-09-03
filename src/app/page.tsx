@@ -54,7 +54,7 @@ function Home() {
 
   return (
     <>
-      <h1>Welcome to ACNH API 2.0</h1>
+      <h1>Welcome to the Animal Crossing API</h1>
       <p>
         This is a reboot of the ACNH API, initially created by Alexis Lours (
         <a
@@ -74,7 +74,7 @@ function Home() {
             Image and audio files are stored in Netlify Blobs. You can access
             them at
             {" "}
-            <code>https://acnh-api.netlify.app/api-v2/blobs/:type/:key</code>
+            <code>https://ac-api.netlify.app/api-v2/blobs/:type/:key</code>
             , where
             {" "}
             <code>:type</code>
