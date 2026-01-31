@@ -2,35 +2,35 @@
 
 @font-face {
   font-family: 'RodinBokuto-Pro';
-  src: url('./assets/fonts/FOT-RodinBokutoh-Pro-L.otf');
+  src: url('/fonts/FOT-RodinBokutoh-Pro-L.otf');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'RodinBokuto-Pro';
-  src: url('./assets/fonts/FOT-RodinBokutoh-Pro-M.otf');
+  src: url('/fonts/FOT-RodinBokutoh-Pro-M.otf');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'RodinBokuto-Pro';
-  src: url('./assets/fonts/FOT-RodinBokutoh-Pro-DB.otf');
+  src: url('/fonts/FOT-RodinBokutoh-Pro-DB.otf');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'RodinBokuto-Pro';
-  src: url('./assets/fonts/FOT-RodinBokutoh-Pro-B.otf');
+  src: url('/fonts/FOT-RodinBokutoh-Pro-B.otf');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'RodinBokuto-Pro';
-  src: url('./assets/fonts/FOT-RodinBokutoh-Pro-EB.otf');
+  src: url('/fonts/FOT-RodinBokutoh-Pro-EB.otf');
   font-weight: 800;
   font-style: normal;
 }
