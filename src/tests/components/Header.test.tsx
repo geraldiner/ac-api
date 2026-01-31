@@ -5,7 +5,6 @@ import { describe, expect, it } from 'vitest';
 describe('Header component', () => {
   it('renders the header', () => {
     render(<Header />);
-    screen.getByText('Animal Crossing API');
     expect(
       screen
         .getByRole('link', { name: 'Animal Crossing API' })
