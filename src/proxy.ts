@@ -1,10 +1,34 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
 
-const isProtectedRoute = createRouteMatcher(['/admin(.*)']);
+const isAdminPage = createRouteMatcher(['/admin(.*)']);
+const isProtectedApiRoute = createRouteMatcher(['/api/admin(.*)']);
 
 export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) {
-    await auth.protect();
+  // No need to check public routes
+  if (!isAdminPage(req)) {
+    return;
+  }
+
+  const { isAuthenticated, redirectToSignIn, sessionClaims } = await auth();
+
+  // Must be signed in to see admin pages
+  if (isAdminPage(req)) {
+    if (!isAuthenticated) {
+      return redirectToSignIn();
+    }
+  }
+
+  // Must have admin role to access protected API routes
+  if (isProtectedApiRoute(req)) {
+    if (!isAuthenticated) {
+      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    }
+
+    const role = sessionClaims?.metadata?.role;
+    if (role !== 'admin') {
+      return NextResponse.json({ message: 'Forbidden' }, { status: 403 });
+    }
   }
 });
 

@@ -1,11 +1,16 @@
 'use client';
-import { buildBlobUriPath } from '../../lib/utils';
-import { FileType, GameInstallment, ResourceType } from '../../types/upload';
+import Button from '@components/Button';
 import Select from '@components/form/SelectInput';
 import TextInput from '@components/form/TextInput';
+import type {
+  FileType,
+  GameInstallment,
+  ResourceType,
+} from '@customTypes/upload';
+import { buildBlobUriPath } from '@lib/utils';
 import axios from 'axios';
-import { useRouter } from 'next/router';
-import { SubmitEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const FILE_TYPES_OPTIONS = [
   { label: 'Audio', value: 'audio' },
@@ -24,17 +29,17 @@ const RESOURCE_TYPES_OPTIONS = [
   { label: 'Villager', value: 'villager' },
 ];
 
-export default function UploadAssetForm() {
+const UploadAssetForm = () => {
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [fileType, setFileType] = useState<FileType | null>(null);
   const [game, setGame] = useState<GameInstallment | null>(null);
   const [resourceType, setResourceType] = useState<ResourceType | null>(null);
 
-  const handleSubmit = async (e: SubmitEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     // Handle form submission logic here
-    if (!file || !fileType || !resourceType) {
+    if (!e.target.checkValidity() || !file || !fileType || !resourceType) {
       alert('Please complete the form before submitting.');
       return;
     }
@@ -60,7 +65,6 @@ export default function UploadAssetForm() {
         );
         router.push(
           `/admin/register?key=${file.name.split('.')[0]}&resourceType=${resourceType}&blobUriPath=${blobUriPath}`,
-          {},
         );
       }
     } catch (error) {
@@ -123,6 +127,9 @@ export default function UploadAssetForm() {
           onChange={(e) => setResourceType(e.target.value as ResourceType)}
         />
       </div>
+      <Button label="Upload" type="submit" />
     </form>
   );
-}
+};
+
+export default UploadAssetForm;

@@ -1,4 +1,37 @@
-import { FileType, GameInstallment, ResourceType } from '../types/upload';
+import type {
+  FileType,
+  GameInstallment,
+  ResourceType,
+} from '@customTypes/upload';
+
+const buildBlobKey = (
+  fileType: FileType,
+  resourceType: ResourceType,
+  key: string,
+  game?: GameInstallment,
+) => {
+  // K.K. Slider song audio file
+  if (fileType === 'audio' && resourceType === 'song') {
+    return `kk/${key}`;
+  }
+
+  // Hourly BGM audio file
+  if (fileType === 'audio' && resourceType === 'hourly_bgm') {
+    return `hourly/${game}/${key}`;
+  }
+
+  // Full size image file
+  if (fileType === 'images') {
+    return `${resourceType}/${key}`;
+  }
+
+  // Icon image file
+  if (fileType === 'icons') {
+    return `${resourceType}/${key}`;
+  }
+
+  throw new Error('Invalid combination of fileType and resourceType');
+};
 
 const buildBlobUriPath = (
   fileType: FileType,
@@ -47,4 +80,4 @@ const getCoverImageUriFromAudioUri = (
   return coverImageUri;
 };
 
-export { buildBlobUriPath, getCoverImageUriFromAudioUri };
+export { buildBlobKey, buildBlobUriPath, getCoverImageUriFromAudioUri };

@@ -1,7 +1,7 @@
 'use client';
 
-import { ResourceType } from '../../../types/upload';
 import RegisterSongForm from '@components/admin/RegisterSongForm';
+import type { ResourceType } from '@customTypes/upload';
 import clsx from 'clsx';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';

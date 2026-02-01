@@ -1,7 +1,9 @@
 import '../globals.css';
+import { ClerkProvider } from '@clerk/nextjs';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Animal Crossing API by Geraldine',
@@ -12,12 +14,16 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>
-        <Header />
-        <div className="w-full min-h-screen">{children}</div>
-        <Footer />
-      </body>
-    </html>
+    <Suspense>
+      <ClerkProvider>
+        <html lang="en">
+          <body>
+            <Header />
+            <div className="w-full min-h-screen">{children}</div>
+            <Footer />
+          </body>
+        </html>
+      </ClerkProvider>
+    </Suspense>
   );
 }

@@ -6,7 +6,7 @@ export default function AdminHeader() {
     <header className="w-full p-5 md:px-10 gap-10 border-b">
       <div className="max-w-6xl mx-auto flex items-center justify-between ">
         <div className="w-1/2">
-          <Link href="/">Animal Crossing API</Link>
+          <Link href="/admin">Animal Crossing API</Link>
         </div>
         <nav className="justify-end">
           <ul className="list-style-none flex gap-5">
@@ -17,7 +17,7 @@ export default function AdminHeader() {
               <Link href="/docs">Docs</Link>
             </li>
             <li className="inline-block">
-              <Link href="/admin">Upload</Link>
+              <Link href="/admin/upload">Upload</Link>
             </li>
             <li className="inline-block">
               <Link href="/admin/register">Register</Link>

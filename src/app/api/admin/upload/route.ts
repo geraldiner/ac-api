@@ -1,21 +1,39 @@
-import { auth } from '@clerk/nextjs/server';
+import type {
+  FileType,
+  GameInstallment,
+  ResourceType,
+} from '@customTypes/upload';
+import { buildBlobKey } from '@lib/utils';
+import { getStore } from '@netlify/blobs';
 
 export async function POST(request: Request) {
-  const { isAuthenticated, sessionClaims } = await auth();
+  const formData = await request.formData();
+  const file = formData.get('file') as File | null;
+  const fileType = formData.get('fileType') as FileType | null;
+  const game = formData.get('game') as GameInstallment | null;
+  const resourceType = formData.get('resourceType') as ResourceType | null;
 
-  if (!isAuthenticated) {
-    return Response.json({ error: 'User is not signed in' }, { status: 401 });
+  if (!file) {
+    return Response.json({ message: 'No file uploaded' }, { status: 400 });
   }
 
-  const canPost = sessionClaims?.metadata.role === 'admin';
+  const store = getStore(fileType as string, {
+    siteID: process.env.NETLIFY_BLOBS_SITE_ID!,
+    token: process.env.NETLIFY_PERSONAL_ACCESS_TOKEN!,
+  });
 
-  if (!canPost) {
-    return Response.json(
-      { error: 'User is not authorized to perform this action' },
-      { status: 403 },
-    );
+  const blobKey = buildBlobKey(
+    fileType!,
+    resourceType!,
+    file.name,
+    game || undefined,
+  );
+
+  try {
+    await store.set(blobKey, file);
+    return Response.json({ message: 'Upload successful' }, { status: 200 });
+  } catch (error) {
+    console.error('Error uploading blob:', error);
+    return Response.json({ message: 'Error uploading blob' }, { status: 500 });
   }
-
-  // Do the upload here
-  return Response.json({ message: 'Upload successful' }, { status: 200 });
 }
