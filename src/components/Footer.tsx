@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer className="w-full h-20 flex items-center justify-between p-5 md:px-10 gap-10 border-t">
       <div className="max-w-6xl mx-auto">
@@ -12,6 +12,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

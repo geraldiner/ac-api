@@ -1,6 +1,7 @@
+import { SignOutButton, SignedIn } from '@clerk/nextjs';
 import Link from 'next/link';
 
-export default function Header() {
+export default function AdminHeader() {
   return (
     <header className="w-full p-5 md:px-10 gap-10 border-b">
       <div className="max-w-6xl mx-auto flex items-center justify-between ">
@@ -15,6 +16,19 @@ export default function Header() {
             <li className="inline-block">
               <Link href="/docs">Docs</Link>
             </li>
+            <li className="inline-block">
+              <Link href="/admin">Upload</Link>
+            </li>
+            <li className="inline-block">
+              <Link href="/admin/register">Register</Link>
+            </li>
+            <SignedIn>
+              <li>
+                <SignOutButton>
+                  <button className="cursor-pointer">Sign Out</button>
+                </SignOutButton>
+              </li>
+            </SignedIn>
           </ul>
         </nav>
       </div>
