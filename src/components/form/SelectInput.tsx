@@ -1,13 +1,10 @@
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  disabled?: boolean;
   label: string;
   options: { label: string; value: string; disabled?: boolean }[];
-  required?: boolean;
-  value: string;
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
-export default function Select({
+export default function SelectInput({
   disabled = false,
   label,
   id,

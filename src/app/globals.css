@@ -60,8 +60,21 @@ body {
   font-weight: 500;
 }
 
-form label {
+audio {
+  @apply h-min;
+}
+
+code {
+  @apply bg-gray-100 dark:bg-gray-800 text-sm p-5 rounded-lg font-mono;
+}
+
+form label,
+form legend {
   @apply block font-bold text-sm/6 text-gray-900;
+}
+
+form label:has(input[type='radio']) {
+  @apply block font-normal text-sm/6 text-gray-900;
 }
 
 form input[type='text'],

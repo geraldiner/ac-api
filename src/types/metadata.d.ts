@@ -1,3 +1,5 @@
+import type { GameInstallment } from './upload';
+
 interface Audio {
   key: string;
   title: string;
@@ -7,15 +9,17 @@ interface Audio {
   mood?: string[];
 }
 
-interface KKSliderSong extends Audio {
+interface Song extends Audio {
+  artist: string;
   buyPrice: number;
   sellPrice: number;
   isOrderable: boolean;
 }
 
 interface HourlyBGM extends Audio {
+  gameInstallment: GameInstallment;
   hour: number;
   weather: 'rainy' | 'snowy' | 'sunny';
 }
 
-export type { Audio, HourlyBGM, KKSliderSong };
+export type { Audio, HourlyBGM, Song };
