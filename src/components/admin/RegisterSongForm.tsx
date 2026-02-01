@@ -1,9 +1,10 @@
 import Button from '@components/Button';
 import NumberInput from '@components/form/NumberInput';
+import RadioInput from '@components/form/RadioInput';
 import TextInput from '@components/form/TextInput';
 import type { ResourceType } from '@customTypes/upload';
 import { getCoverImageUriFromAudioUri } from '@lib/utils';
-import axios from 'axios';
+import axios, { AxiosError, isAxiosError } from 'axios';
 import { useState } from 'react';
 
 export default function RegisterSongForm({
@@ -17,6 +18,7 @@ export default function RegisterSongForm({
 }) {
   const [key, setKey] = useState<string>(assetKey);
   const [songTitle, setSongTitle] = useState<string>('');
+  const [songArtist, setSongArtist] = useState<string>('');
   const [audioBlobUri, setAudioBlobUri] = useState<string>(blobUriPath);
   const [coverImageBlobUri, setCoverImageBlobUri] = useState<string>(
     getCoverImageUriFromAudioUri(blobUriPath, resourceType) || '',
@@ -34,28 +36,30 @@ export default function RegisterSongForm({
       return;
     }
 
+    const payload = {
+      key,
+      title: songTitle,
+      artist: songArtist,
+      audioBlobUriPath: audioBlobUri,
+      coverImageBlobUriPath: coverImageBlobUri,
+      tags,
+      mood,
+      buyPrice,
+      sellPrice,
+      isOrderable,
+      resourceType,
+    };
     try {
-      const formData = new FormData();
-      formData.append('key', key);
-      formData.append('title', songTitle);
-      formData.append('audioBlobUri', audioBlobUri);
-      formData.append('coverImageBlobUri', coverImageBlobUri);
-      formData.append('tags', JSON.stringify(tags));
-      formData.append('mood', JSON.stringify(mood));
-      formData.append('buyPrice', buyPrice.toString());
-      formData.append('sellPrice', sellPrice.toString());
-      formData.append('isOrderable', isOrderable ? 'true' : 'false');
-
-      const response = await axios.post('/api/admin/register', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const response = await axios.post('/api/admin/register', payload);
       if (response.status === 200) {
-        alert('Song metadata registered successfully!');
+        alert('Metadata registered successfully.');
       }
-    } catch (error) {
-      console.error('Error registering metadata:', error);
+    } catch (error: AxiosError | unknown) {
+      if (isAxiosError(error) && error.response) {
+        alert(`Error registering metadata: ${error.response.data.message}`);
+      } else {
+        alert(`Error registering metadata: ${error}`);
+      }
     }
   };
 
@@ -81,6 +85,15 @@ export default function RegisterSongForm({
           onChange={(e) => setSongTitle(e.target.value)}
         />
 
+        {/* Artist */}
+        <TextInput
+          id="artist"
+          label="Song Artist"
+          placeholder="eg. K.K. Slider"
+          value={songArtist}
+          onChange={(e) => setSongArtist(e.target.value)}
+        />
+
         {/* Blob URI Path */}
         <TextInput
           disabled={true}
@@ -94,7 +107,7 @@ export default function RegisterSongForm({
         <TextInput
           disabled={true}
           id="coverImageBlobUri"
-          label="CoverImage Blob URI Path"
+          label="Cover Image Blob URI Path"
           value={coverImageBlobUri}
           onChange={(e) => setCoverImageBlobUri(e.target.value)}
         />
@@ -104,6 +117,7 @@ export default function RegisterSongForm({
           id="tags"
           label="Song Tags (comma separated)"
           placeholder="eg. pop"
+          required={false}
           value={tags.join(', ')}
           onChange={(e) =>
             setTags(e.target.value.split(',').map((tag) => tag.trim()))
@@ -115,6 +129,7 @@ export default function RegisterSongForm({
           id="Mood"
           label="Song Mood (comma separated)"
           placeholder="eg. uplifting"
+          required={false}
           value={mood.join(', ')}
           onChange={(e) =>
             setMood(e.target.value.split(',').map((mood) => mood.trim()))
@@ -137,6 +152,18 @@ export default function RegisterSongForm({
           placeholder="eg. 800"
           value={sellPrice.toString()}
           onChange={(e) => setSellPrice(parseInt(e.target.value, 10))}
+        />
+
+        {/* Is Orderable */}
+        <RadioInput
+          id="isOrderable"
+          label="Is the song orderable?"
+          options={[
+            { label: 'Yes', value: 'true' },
+            { label: 'No', value: 'false' },
+          ]}
+          value={String(isOrderable)}
+          onChange={(e) => setIsOrderable(e.target.value === 'true')}
         />
       </div>
       <Button label="Register" type="submit" />

@@ -23,6 +23,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@lib/*": ["lib/*"],
+      "@models/*": ["lib/models/*"],
       "@customTypes/*": ["types/*"]
     }
   },

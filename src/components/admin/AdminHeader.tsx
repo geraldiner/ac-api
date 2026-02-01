@@ -17,7 +17,7 @@ export default function AdminHeader() {
               <Link href="/docs">Docs</Link>
             </li>
             <li className="inline-block">
-              <Link href="/admin/upload">Upload</Link>
+              <Link href="/admin">Upload</Link>
             </li>
             <li className="inline-block">
               <Link href="/admin/register">Register</Link>
