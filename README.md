@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 🚀 Other Projects
+
+Check out other stuff I've worked on:
+
+**Sushi Menu Filter**: https://github.com/geraldiner/sushi-menu-filter
+
+**Reuben Sandwiches**: https://github.com/geraldiner/reuben-sandwiches
+
+**Animal Crossing API**: https://github.com/geraldiner/ac-api
+
+## 🤙 Let's connect
+
+- Website: [geraldiner.com](https://geraldiner.com)
+- Resume: [Geraldine R](https://geraldiner.com/GeraldineRagsac_Resume.pdf)
+- LinkedIn: [in/geraldiner](https://linkedin.com/in/geraldiner)
+- Sometimes I write: [@geraldiner](https://geraldiner.hashnode.dev)
+- For crochet work: [@geraldinedesu](https://instagram.com/geraldinedesu)
