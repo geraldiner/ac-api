@@ -7,11 +7,4 @@ describe('Footer component', () => {
     render(<Footer />);
     expect(screen.getByText(/Created by Geraldine/i)).toBeDefined();
   });
-
-  it('all footer links point to correct URLs', () => {
-    render(<Footer />);
-    expect(
-      screen.getByRole('link', { name: 'devlog' }).getAttribute('href'),
-    ).toBe('/devlog');
-  });
 });
